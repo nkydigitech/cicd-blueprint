@@ -1,0 +1,22 @@
+name: Hello CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run a tiny test script
+        run: |
+          echo "Hello CI — this is a simple test job"
+          echo "Runner: $(uname -a)"
+          echo "Current dir: $(pwd)"
+          echo "Files in workspace:"
+          ls -la
